@@ -15,14 +15,6 @@ This approach is tried and tested in several projects and works out of the box.
 - Only runs between 08:00 and 17:00.  
 - When the player stares too long, calls `DamagePlayer()` once per second.
 
-## Customizing
-
-| Setting           | Purpose                              |
-|-------------------|--------------------------------------|
-| `thresholdAngle`  | Safe viewing cone (degrees)          |
-| Hour check        | Change the 08–17 range if you need   |
-| `DamagePlayer()`  | Hook in your own health system       |
-
 ## License
 
 MIT. Use freely in personal or commercial projects.
