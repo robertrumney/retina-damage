@@ -11,11 +11,22 @@ public class RetinaDamage : MonoBehaviour
     private float damageTimer = 0f;
 
     private int count = 0;
-
     private bool isDamaging = false;
 
     private void Start()
     {
+        if (target == null)
+        {
+            foreach (var l in FindObjectsOfType<Light>())
+            {
+                if (l.type == LightType.Directional)
+                {
+                    target = l.transform;
+                    break;
+                }
+            }
+        }
+
         if (GameLoader.instance.skydome)
         {
             GameLoader.instance.skydome.Moon.MeshBrightness = 0.15f;
@@ -32,6 +43,8 @@ public class RetinaDamage : MonoBehaviour
 
     private void Update()
     {
+        if (target == null) return;
+
         if (IsLookingAtTarget())
         {
             if (!isDamaging)
@@ -75,8 +88,6 @@ public class RetinaDamage : MonoBehaviour
 
     private void DamagePlayer()
     {
-        // Player.Damage(1);
-
         if (count < 3)
         {
             Debug.Log("DON'T STARE DIRECTLY INTO THE SUN!");
